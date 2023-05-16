@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Ball {
     // instance variables
@@ -42,5 +43,9 @@ public class Ball {
         }
         xPos += xVelocity;
         yPos += yVelocity;
+    }
+    
+    public Rectangle getBounds() {
+        return new Rectangle(xPos, yPos, diameter, diameter);
     }
 }

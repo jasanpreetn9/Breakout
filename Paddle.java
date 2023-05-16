@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 public class Paddle {
@@ -17,7 +18,7 @@ public class Paddle {
         width = 100;
         height = 20;
         xPos = 200;
-        yPos = 300;
+        yPos = 450;
         color = Color.RED;
         xVelocity = 0;
     }
@@ -45,5 +46,9 @@ public class Paddle {
         if (xPos + xVelocity > 0 && xPos + xVelocity < breakout.getWidth() - width) {
             xPos += xVelocity;
         }
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(xPos, yPos, width, height);
     }
 }
