@@ -51,4 +51,9 @@ public class Paddle {
     public Rectangle getBounds() {
         return new Rectangle(xPos, yPos, width, height);
     }
+
+    public boolean collision() {
+        return this.getBounds().intersects(breakout.getBall().getBounds());
+        // is the paddle being intersected with the ball
+    }
 }

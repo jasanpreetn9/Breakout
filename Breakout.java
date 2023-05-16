@@ -26,7 +26,7 @@ public class Breakout extends JPanel {
         setBackground(Color.darkGray);
         setBorder(BorderFactory.createLineBorder(Color.black, 3));
 
-        ball = new Ball(this, 55, Color.blue); // this is like self in python
+        ball = new Ball(this, 25, Color.blue); // this is like self in python
         paddle = new Paddle(this);
         // block = new Block(0,0,Color.GREEN,10);
         // block2 = new Block(100,0,Color.GREEN,10);
@@ -65,8 +65,16 @@ public class Breakout extends JPanel {
 
         for (int x = 0; x < blocks.size(); x++) {
             blocks.get(x).paint(g);
+            if (blocks.get(x).collision()) {
+                blocks.remove(x);
+                ball.setYVelocity(2);
+                x--;
+            }
         }
-
+        if (paddle.collision()) {
+            // System.out.println("Paddle Hit");
+            ball.setYVelocity(-4);
+        }
     }
 
     public void move() {
@@ -82,13 +90,23 @@ public class Breakout extends JPanel {
                 int red = (int)(Math.random()  * 226);
                 int green = (int)(Math.random()  * 226);
                 int blue = (int)(Math.random()  * 226);
-                blocks.add(new Block(xOffset, yOffset, new Color(red, green, blue), 10));
+                blocks.add(new Block(this,xOffset, yOffset, new Color(red, green, blue), 10));
                 xOffset += 53;
             }
             yOffset += 33;
             xOffset = 3;
         }
 
-        System.out.println(blocks.size());
+    }
+
+    // getter methods (accessors methods (AP))
+    public Ball getBall() {
+        return ball;
+    }
+    public Paddle getPaddle() {
+        return paddle;
+    }
+    public ArrayList<Block> getBlocks() {
+        return blocks;
     }
 }

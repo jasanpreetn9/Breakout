@@ -19,8 +19,8 @@ public class Ball {
         color = c;
         xPos = 99;
         yPos = 16;
-        xVelocity = 2;
-        yVelocity = 2;
+        xVelocity = 4;
+        yVelocity = 4;
     }
     // methods
     public void paint(Graphics g) {
@@ -30,16 +30,16 @@ public class Ball {
 
     public void move(){
         if (xPos + xVelocity > breakout.getWidth() - diameter) {
-            xVelocity = -2;
+            xVelocity = -4;
         }
         if (xPos - xVelocity < 0) {
-            xVelocity = 2;
+            xVelocity = 4;
         }
         if (yPos > breakout.getHeight() - diameter) {
-            yVelocity = -2;
+            yVelocity = -4;
         }
         if (yPos < 0) {
-            yVelocity = 2;
+            yVelocity = 4;
         }
         xPos += xVelocity;
         yPos += yVelocity;
@@ -47,5 +47,10 @@ public class Ball {
     
     public Rectangle getBounds() {
         return new Rectangle(xPos, yPos, diameter, diameter);
+    }
+
+    // setter method (mutator method(AP))
+    public void setYVelocity(int yVel) {
+        yVelocity = yVel;
     }
 }
