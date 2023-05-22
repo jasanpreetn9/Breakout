@@ -12,15 +12,17 @@ public class Breakout extends JPanel {
     private int width, height;
     private Ball ball;
     private Paddle paddle;
+    private int points;
+    private Window window;
     // private Block block, block2;
 
     private ArrayList<Block> blocks;
 
     // constructor
-    public Breakout(int w, int h) {
+    public Breakout(Window win, int w, int h) {
         width = w;
         height = h;
-
+        window = win;
         setSize(width, height);
         setLocation(50, 50);
         setBackground(Color.darkGray);
@@ -66,6 +68,8 @@ public class Breakout extends JPanel {
         for (int x = 0; x < blocks.size(); x++) {
             blocks.get(x).paint(g);
             if (blocks.get(x).collision()) {
+                points += 10;
+                window.changeScore(points);
                 blocks.remove(x);
                 ball.setYVelocity(2);
                 x--;

@@ -26,10 +26,10 @@ public class Paddle {
     // methods
     public void keyPressed(KeyEvent e) { // explain
         if (e.getKeyCode() == 37) {
-            xVelocity = -5;
+            xVelocity = -10;
         }
         if (e.getKeyCode() == 39) {
-            xVelocity = 5;
+            xVelocity = 10;
         }
     }
 

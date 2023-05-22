@@ -17,10 +17,10 @@ public class Ball {
         breakout = out; // this allows for communication/access to the Breakout object
         diameter = d;
         color = c;
-        xPos = 99;
-        yPos = 16;
-        xVelocity = 4;
-        yVelocity = 4;
+        xPos = 200;
+        yPos = 450;
+        xVelocity = 10;
+        yVelocity = 10;
     }
     // methods
     public void paint(Graphics g) {
@@ -30,16 +30,16 @@ public class Ball {
 
     public void move(){
         if (xPos + xVelocity > breakout.getWidth() - diameter) {
-            xVelocity = -4;
+            xVelocity = -10;
         }
         if (xPos - xVelocity < 0) {
-            xVelocity = 4;
+            xVelocity = 10;
         }
         if (yPos > breakout.getHeight() - diameter) {
-            yVelocity = -4;
+            yVelocity = -10;
         }
         if (yPos < 0) {
-            yVelocity = 4;
+            yVelocity = 10;
         }
         xPos += xVelocity;
         yPos += yVelocity;
