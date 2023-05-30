@@ -28,7 +28,7 @@ public class Breakout extends JPanel {
         setBackground(Color.darkGray);
         setBorder(BorderFactory.createLineBorder(Color.black, 3));
 
-        ball = new Ball(this, 25, Color.blue); // this is like self in python
+        ball = new Ball(this, window, 70, Color.blue); // this is like self in python
         paddle = new Paddle(this);
         // block = new Block(0,0,Color.GREEN,10);
         // block2 = new Block(100,0,Color.GREEN,10);
@@ -55,7 +55,7 @@ public class Breakout extends JPanel {
 
         });
 
-        setFocusable(true); // when the pgroams runs, puts the cursor in on the JPanel
+        setFocusable(true); // when the programs runs, puts the cursor in on the JPanel
     }
 
     // methods
@@ -64,15 +64,17 @@ public class Breakout extends JPanel {
         super.paint(g);
         ball.paint(g);
         paddle.paint(g);
-
+        // if ( points == 300) {
+        //     window.setEndScreen(true);
+        // }
         for (int x = 0; x < blocks.size(); x++) {
             blocks.get(x).paint(g);
             if (blocks.get(x).collision()) {
                 points += 10;
-                window.changeScore(points);
                 blocks.remove(x);
                 ball.setYVelocity(2);
                 x--;
+                window.setScore(points);
             }
         }
         if (paddle.collision()) {
@@ -90,7 +92,7 @@ public class Breakout extends JPanel {
         int xOffset = 3;
         int yOffset = 3;
         for (int row = 0; row < 5; row++) {
-            for (int col = 0; col < 13; col++) {
+            for (int col = 0; col < 10; col++) {
                 int red = (int)(Math.random()  * 226);
                 int green = (int)(Math.random()  * 226);
                 int blue = (int)(Math.random()  * 226);
@@ -113,4 +115,5 @@ public class Breakout extends JPanel {
     public ArrayList<Block> getBlocks() {
         return blocks;
     }
+
 }
